@@ -3,9 +3,9 @@
 
 # 预览图
 ### 白天
-![day]()
+![day](https://raw.githubusercontent.com/xiaoji235/ctfileGet-for-MDUI/master/day.jpg)
 ### 黑夜
-![night]()
+![night](https://raw.githubusercontent.com/xiaoji235/ctfileGet-for-MDUI/master/night.jpg)
 
 # 警告
 - 严禁将此源码作为商业用途，否则其产生的后果自负！
