@@ -2,7 +2,7 @@
 
 ## ctfileGet MDUI 版，在[ctfileGet](https://github.com/qinlili23333/ctfileGet)基础上优化UI
 
-## [懒人直达](https://xiaoji235.github.io/other/ctwp/index.html)
+## [懒人直达在线解析](https://xiaoji235.github.io/other/ctwp/index.html)
 
 
 # 预览图
