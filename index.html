@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html>
+	<title>城通网盘解析器</title>
+
+	<head>
+		<meta name="description" content="解析城通网盘直连地址" />
+		<link rel="canonical" href="https://ctfile.qinlili.bid/" />
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+		<meta name="theme-color" content="#FFFFFF">
+		<link rel="icon" href="./icon.png">
+		<!-- MDUI CSS -->
+		  <link rel="stylesheet" href="https://cdn.w3cbus.com/library/mdui/1.0.2/css/mdui.min.css"/>
+		  <link rel="stylesheet" href="https://cdn.w3cbus.com/mdui/docs~1/static/index.68b5d124.css">
+		  <link rel="stylesheet" href="css/scroll.css">
+		  <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css" integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous"/>
+<script type="text/javascript" src="./mode.js"></script>
+	<script type="text/javascript">var isindex=true;var title="";var visitor=" "</script>
+	<script type="text/javascript">window.onload=getCSS();</script>
+		<script src="./ctget.js"></script>
+	</head>
+
+	<body class="">
+
+	<!--title-->
+	<div class="mdui-toolbar mdui-shadow-3 ">
+	<h1 class="mdui-typo-headline mdui-text-color-white title">城通网盘解析器</h1>
+	</div>
+	<div class="mdui-container">
+		<br>
+		<br>
+		<h2 class="title">请输入链接和密码(可选)</h2>
+		<H4 class="title">下载地址有一定有效期,不可用于分享</H4>
+		<button onclick="readClipboard();" class="mdui-btn mdui-ripple">读取剪贴板</button>
+		<br>
+		<br>
+			
+			<div class="mdui-textfield">
+				<input id="link" class="mdui-textfield-input" placeholder="输入分享链接"/>
+			</div>
+		
+		<br>
+		<br>
+		
+			<div class="mdui-textfield">
+				<input id="passcode" class="mdui-textfield-input" placeholder="密码"/>
+			</div>
+		
+		
+		<br>
+		<br>
+		<button onclick="getInfo();" class="mdui-btn mdui-ripple">获取下载地址</button>
+		<br>
+		<H4 id="filename" class="title"></H4>
+		<H4 id="filesize" class="title"></H4>
+		<H4 id="filetime" class="title"></H4>
+		<p id="dlURL" class="title"></p>
+		<button onclick="dlFile();" id="dlbtn" style="display:none;" class="mdc-button foo-button mdui-btn mdui-ripple">下载文件</button>
+		<br>
+		<button onclick="document.location.href='https://github.com/qinlili23333'" class="mdui-btn mdui-ripple">琴梨梨主页</button>
+		<button onclick="document.location.href='https://github.com/qinlili23333/ctfileGet'" class="mdui-btn mdui-ripple">本项目已开源</button>
+		<!-- 城通 -->
+		<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1806614386308377" data-ad-slot="4999029283"
+			 data-ad-format="auto" data-full-width-responsive="true"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+		<script>
+			var REFERRER_BLACKLIST = ['https://www.qvocd.cc/', 'https://funletu.com/'];
+			        if (REFERRER_BLACKLIST.includes(document.referrer)) {
+			            alert("禁止从该域名访问本站，该域名存在收费资源分享或强制性公众号引流，却没给我分钱\n你赚钱了，我没赚到钱，那我凭什么给你免费用？\n如果你是用户，你可以直接在新标签页地址栏输入本站域名https://ctfile.qinlili.bid访问\n如果你是站长想解除黑名单，给我打钱就行，你赚钱了我没赚到，那我在自己的地盘上恶心下你是必然的\n\n即将传送到琴梨梨小站首页...");
+			            document.location.href = "https://qinlili.bid";
+			        }
+			        const funDownload = (content, filename) => {
+			            var eleLink = document.createElement('a');
+			            eleLink.download = filename;
+			            eleLink.style.display = 'none';
+			            eleLink.href = content;
+			            document.body.appendChild(eleLink);
+			            eleLink.click();
+			            document.body.removeChild(eleLink);
+			        };
+			        const getInfo = async () => {
+			            document.getElementById("filename").innerText = "";
+			            document.getElementById("filesize").innerText = "";
+			            document.getElementById("filetime").innerText = "";
+			            document.getElementById("dlURL").innerText = ""
+			            document.getElementById("dlbtn").style.display = "none";
+			            password = document.getElementById("passcode").value ? document.getElementById("passcode").value : "547873715";
+			            let fileInfo = await ctfile.getByLink(document.getElementById("link").value, password);
+			            console.log(fileInfo);
+			            if (fileInfo.success) {
+			                document.getElementById("filename").innerText = "文件名称:" + fileInfo.name;
+			                document.getElementById("filesize").innerText = "文件大小:" + fileInfo.size;
+			                document.getElementById("filetime").innerText = "文件时间:" + fileInfo.time;
+			                document.getElementById("dlURL").innerText = "下载地址:" + fileInfo.link;
+			                document.getElementById("dlbtn").style.display = "block";
+			                const record = {
+			                    link: document.getElementById("link").value,
+			                    password,
+			                    queryTime: new Date().toLocaleString(),
+			                    name: fileInfo.name,
+			                    size: fileInfo.size,
+			                    time: fileInfo.time,
+			                }
+			                const store = localStorage.getItem("store")
+			                let records = JSON.parse(store);
+			
+			                if (store && Array.isArray(records)) {
+			                    records = records.filter(r => r.link !== record.link)
+			                    records.push(record);
+			                    localStorage.setItem("store", JSON.stringify(records));
+			                } else {
+			                    localStorage.setItem("store", JSON.stringify([record]))
+			                }
+			            } else {
+			                document.getElementById("filename").innerText = "出错了，错误原因是:" + fileInfo.errormsg;
+			            }
+			        }
+			        const dlFile = () => {
+			            funDownload(dlURL, jsonText.file_name);
+			        }
+			        const readClipboard = async () => {
+			            const log = console.log.bind(console)
+			            const text = await navigator.clipboard.readText().catch(err => {
+			                alert("读取剪贴板失败了喵！你是否拒绝了剪贴板权限？");
+			                return false;
+			            });
+			            if (text) {
+			                const urlPattern = /(https:\/\/)?[a-z0-9]+\.ctfile\.com\/[a-z]\/([\da-z]+-[a-z\d]+-[a-z\d]+)/;
+			                const pwPattern = /\d{4}/
+			                const $link = document.querySelector("#link")
+			                const $passcode = document.querySelector("#passcode")
+			
+			                try {
+			                    const link = text.match(urlPattern);
+			                    $link.focus()
+			                    $link.value = link[0];
+			                    const rawPassword = text.split("密码")[1] || text.split("密碼")[1];
+			                    const password = rawPassword.match(pwPattern);
+			                    $passcode.focus()
+			                    $passcode.value = password[0];
+			                    await getInfo()
+			                } catch (e) {
+			                    const dialog = new window.mdc.dialog.MDCDialog(document.querySelector('.mdc-dialog'));
+			                    dialog.open()
+			                }
+			            }
+			        }
+		</script>
+		
+		<br><br>
+		<!--历史记录-->
+		<div class="history-container">
+		<h2 class="title">历史记录</h2>
+		<div id="records">
+
+		</div>
+		</div>
+		<br>
+
+		<script>
+			const setBlank = () => {
+						            document.querySelector("#records").innerHTML =
+						                `<h4 class="title nodirectory" style="text-align:center;">暂无记录</h4>`
+						        }
+						        const clearAll = () => {
+						            const dialog = new window.mdc.dialog.MDCDialog(document.querySelector('.mdc-dialog'));
+						            dialog.open()
+						        }
+						        const clearAllConfirm = () => {
+						            localStorage.removeItem("store")
+						            setBlank()
+						        }
+						        const writeClipboard = async (element) => {
+						            const link = element.parentElement.dataset.link;
+						            const password = element.parentElement.dataset.pw;
+						            await navigator.clipboard.writeText(`${link}密码: ${password}`);
+						            element.querySelector('.mdc-button__label').innerText = '已复制';
+						        }
+						        const store = localStorage.getItem("store")
+						        const records = JSON.parse(store)
+						        const $records = document.querySelector("#records")
+						        if (store && Array.isArray(records) && records.length > 0) {
+						            records.forEach(r => {
+						                $records.insertAdjacentHTML("beforeend",
+						                    `<div class="mdui-table" data-link="${r.link}" data-pw="${r.password}">
+												<div class="history-box">
+						                        <h4 class="title">
+						                            <span>${r.name}</span>
+						                            <span>${r.size}</span>
+						                        </h4>
+						                        <h4 class="title">原始链接: ${r.link}</h4>
+						                        <h6 class="title">密码: ${r.password}</h6>
+						                        <h6 class="title">发布时间: ${r.time}</h6>
+						                        <h6 class="title">查询时间: ${r.queryTime}</h6>
+						                        <button onclick="writeClipboard(this)" class="mdui-btn mdui-ripple">复制</button>
+						                    </div><br>
+											</div>
+											<br>`)
+						            })
+						        } else {
+						            setBlank()
+						        }
+		</script>
+		<script>
+			window.mdc.autoInit();
+						        document.querySelectorAll('.foo-button').forEach(element => {
+						            mdc.ripple.MDCRipple.attachTo(element);
+						        });
+		</script>
+
+		
+		
+		
+		
+		
+	</div>
+
+
+	<div class="footer">
+		<h3 class="title" style="text-align:center;">城通网盘解析器（MDUI）版</h3>
+		<div class="copyright">
+		<span class="title">UI Re designed By <a href="https://github.com/xiaoji235" style="color:#feffca;font-weight: bold">xiaoji235</a>&nbsp┃&nbsp Web UI: <a href="https://www.mdui.org/" style="color:#ff4081;font-weight:bold"> MDUI</a></span>
+		</div>
+	</div>
+
+
+	
+	</body>
+	
+</html>

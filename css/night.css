@@ -1,0 +1,25 @@
+/**°µºÚÖ÷Ìâ**/
+
+.mdui-toolbar,.footer,.mdui-table{
+	background-color:#212121 !important
+}
+.title{
+	color: white;
+}
+
+body{
+	background-color:#303030!important;
+}
+
+input#link{
+	color:rgba(255,255,255,.7)!important
+}
+
+input#passcode{
+	color:rgba(255,255,255,.7)!important
+}
+
+.mdui-textfield-input{
+	border-bottom:1px solid rgb(255 255 255)!important
+}
+
