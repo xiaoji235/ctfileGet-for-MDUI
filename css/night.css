@@ -1,9 +1,9 @@
-/**°µºÚÖ÷Ìâ**/
+/**æš—é»‘æ¨¡å¼**/
 
 .mdui-toolbar,.footer,.mdui-table{
 	background-color:#212121 !important
 }
-.title,.mdui-textfield-label{
+.title,.mdui-textfield-label,.mdui-dialog-title,.mdui-dialog-content{
 	color: white !important;
 }
 
