@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<title>城通网盘解析器</title>
+
+	<head>
+		<meta name="description" content="解析城通网盘直连地址" />
+		<link rel="canonical" href="https://ctfile.qinlili.bid/" />
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+		<link rel="icon" href="./icon.png">
+		
+		<!-- MDUI CSS -->
+		<link rel="stylesheet" href="https://cdn.w3cbus.com/library/mdui/1.0.2/css/mdui.min.css"/>
+		<link rel="stylesheet" href="https://cdn.w3cbus.com/mdui/docs~1/static/index.68b5d124.css">
+		<link rel="stylesheet" href="css/scroll.css">
+		<link rel="stylesheet" href="css/main.css">
+		  
+		<!-- MDUI JavaScript -->
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"></script>
+		<script type="text/javascript" src="js/mode.js"></script>
+		<script type="text/javascript">var isindex=true;var title="";var visitor=" "</script>
+		<script type="text/javascript">window.onload=getCSS();</script>
+		<script src="js/ctget.js"></script>
+	</head>
+
+	<body>
+	<!--title-->
+	<div class="mdui-toolbar mdui-shadow-3 ">
+	<a href="https://github.com/xiaoji235" class="mdui-typo-headline mdui-text-color-white title">城通网盘解析器</a>
+	</div>
+	<div class="mdui-container">
+		<br>
+		<br>
+		<h2 class="title">请输入链接和密码(可选)</h2>
+		<H4 class="title">下载地址有一定有效期,不可用于分享</H4>
+		<button onclick="readClipboard();" class="mdui-btn mdui-ripple">读取剪贴板</button>
+		<br>
+		<br>
+			
+			<div class="mdui-textfield mdui-textfield-floating-label">
+				<label class="mdui-textfield-label">输入分享链接</label>
+				<input id="link" class="mdui-textfield-input"/>
+			</div>
+		
+		<br>
+		<br>
+		
+			<div class="mdui-textfield mdui-textfield-floating-label">
+				<label class="mdui-textfield-label">密码</label>
+				<input id="passcode" class="mdui-textfield-input"/>
+			</div>
+		
+		
+		<br>
+		<br>
+		<button onclick="getInfo();" class="mdui-btn mdui-ripple">获取下载地址</button>
+		<br>
+		<H4 id="filename" class="title"></H4>
+		<H4 id="filesize" class="title"></H4>
+		<H4 id="filetime" class="title"></H4>
+		<p id="dlURL" class="title"></p>
+		<button onclick="dlFile();" id="dlbtn" style="display:none;" class="mdc-button foo-button mdui-btn mdui-ripple">下载文件</button>
+		<br>
+		<button onclick="document.location.href='https://github.com/qinlili23333'" class="mdui-btn mdui-ripple">琴梨梨主页</button>
+		<button onclick="document.location.href='https://github.com/qinlili23333/ctfileGet'" class="mdui-btn mdui-ripple">本项目已开源</button>
+		<button onclick="document.location.href='https://github.com/xiaoji235/ctfileGet-for-MDUI'" class="mdui-btn mdui-ripple">MDUI版</button>
+		
+		<br><br>
+		<!--历史记录-->
+		<div class="history-container">
+		<h2 class="title">历史记录</h2>
+		<div id="records">
+
+		</div>
+		</div>
+		<br>
+		<script src="js/copy.js"></script>
+		<script src="js/history.js"></script>
+
+		
+		
+		
+		
+		
+	</div>
+
+
+	<div class="footer">
+		<h3 class="title" style="text-align:center;">城通网盘解析器（MDUI）版</h3>
+		<div class="copyright">
+		<span class="title">UI Re designed By <a href="https://github.com/xiaoji235" style="color:#feffca;font-weight: bold">xiaoji235</a>&nbsp┃&nbsp Web UI: <a href="https://www.mdui.org/" style="color:#ff4081;font-weight:bold"> MDUI</a></span>
+		</div>
+	</div>
+
+
+	
+	</body>
+	
+</html>
