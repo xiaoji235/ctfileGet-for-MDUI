@@ -9,15 +9,18 @@
 		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
 		<meta name="theme-color" content="#FFFFFF">
 		<link rel="icon" href="./icon.png">
+		
 		<!-- MDUI CSS -->
-		  <link rel="stylesheet" href="https://cdn.w3cbus.com/library/mdui/1.0.2/css/mdui.min.css"/>
-		  <link rel="stylesheet" href="https://cdn.w3cbus.com/mdui/docs~1/static/index.68b5d124.css">
-		  <link rel="stylesheet" href="css/scroll.css">
-		  <link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css" integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous"/>
-<script type="text/javascript" src="./mode.js"></script>
-	<script type="text/javascript">var isindex=true;var title="";var visitor=" "</script>
-	<script type="text/javascript">window.onload=getCSS();</script>
+		<link rel="stylesheet" href="https://cdn.w3cbus.com/library/mdui/1.0.2/css/mdui.min.css"/>
+		<link rel="stylesheet" href="https://cdn.w3cbus.com/mdui/docs~1/static/index.68b5d124.css">
+		<link rel="stylesheet" href="css/scroll.css">
+		<link rel="stylesheet" href="css/main.css">
+		  
+		<!-- MDUI JavaScript -->
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"></script>
+		<script type="text/javascript" src="./mode.js"></script>
+		<script type="text/javascript">var isindex=true;var title="";var visitor=" "</script>
+		<script type="text/javascript">window.onload=getCSS();</script>
 		<script src="./ctget.js"></script>
 	</head>
 
@@ -25,7 +28,7 @@
 
 	<!--title-->
 	<div class="mdui-toolbar mdui-shadow-3 ">
-	<h1 class="mdui-typo-headline mdui-text-color-white title">城通网盘解析器</h1>
+	<a href="https://github.com/xiaoji235" class="mdui-typo-headline mdui-text-color-white title">城通网盘解析器</a>
 	</div>
 	<div class="mdui-container">
 		<br>
@@ -36,15 +39,17 @@
 		<br>
 		<br>
 			
-			<div class="mdui-textfield">
-				<input id="link" class="mdui-textfield-input" placeholder="输入分享链接"/>
+			<div class="mdui-textfield mdui-textfield-floating-label">
+				<label class="mdui-textfield-label">输入分享链接</label>
+				<input id="link" class="mdui-textfield-input"/>
 			</div>
 		
 		<br>
 		<br>
 		
-			<div class="mdui-textfield">
-				<input id="passcode" class="mdui-textfield-input" placeholder="密码"/>
+			<div class="mdui-textfield mdui-textfield-floating-label">
+				<label class="mdui-textfield-label">密码</label>
+				<input id="passcode" class="mdui-textfield-input"/>
 			</div>
 		
 		
@@ -144,8 +149,7 @@
 			                    $passcode.value = password[0];
 			                    await getInfo()
 			                } catch (e) {
-			                    const dialog = new window.mdc.dialog.MDCDialog(document.querySelector('.mdc-dialog'));
-			                    dialog.open()
+			                    mdui.alert('期望的文本形式类似于“https://url76.ctfile.com/f/20044976-553638227-3a47df 密码4718”，请尝试重新复制或者手动填入', '无法从剪贴板读取链接和密码');
 			                }
 			            }
 			        }
@@ -204,12 +208,6 @@
 						        } else {
 						            setBlank()
 						        }
-		</script>
-		<script>
-			window.mdc.autoInit();
-						        document.querySelectorAll('.foo-button').forEach(element => {
-						            mdc.ripple.MDCRipple.attachTo(element);
-						        });
 		</script>
 
 		
