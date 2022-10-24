@@ -7,7 +7,7 @@
 	color: white !important;
 }
 
-body{
+body,.mdui-dialog-alert{
 	background-color:#303030!important;
 }
 
