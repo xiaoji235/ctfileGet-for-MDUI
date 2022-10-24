@@ -11,5 +11,8 @@
 ### 黑夜
 ![night](https://raw.githubusercontent.com/xiaoji235/ctfileGet-for-MDUI/master/night.jpg)
 
+## 附加说明：
+- 由于css忘记改编码了（unicode），部分中文可能不会显示，另存为UTF-8格式覆盖掉就OK了。
+
 # 警告
 - 严禁将此源码作为商业用途，否则其产生的后果自负！
