@@ -26,7 +26,11 @@ html{
 }
 
 .history-box{
-margin:0px 0px 0px 2%
+	margin: 0px 0px 0px 2%;
+	display: inline-block;
+	max-width: 95%;
+	overflow: hidden;
+	text-overflow: ellipsis
 }
 
 .footer{
