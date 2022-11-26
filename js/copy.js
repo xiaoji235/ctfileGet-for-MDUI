@@ -1,16 +1,7 @@
-﻿			var REFERRER_BLACKLIST = ['https://www.qvocd.cc/', 'https://funletu.com/'];
+			var REFERRER_BLACKLIST = ['https://www.qvocd.cc/', 'https://funletu.com/'];
 			        if (REFERRER_BLACKLIST.includes(document.referrer)) {
 			            alert("禁止从该域名访问本站，该域名存在收费资源分享或强制性公众号引流，却没给我分钱\n你赚钱了，我没赚到钱，那我凭什么给你免费用？\n如果你是用户，你可以直接在新标签页地址栏输入本站域名https://ctfile.qinlili.bid访问\n如果你是站长想解除黑名单，给我打钱就行，你赚钱了我没赚到，那我在自己的地盘上恶心下你是必然的\n\n即将传送到琴梨梨小站首页...");
 			            document.location.href = "https://qinlili.bid";
-			        }
-			        const funDownload = (content, filename) => {
-			            var eleLink = document.createElement('a');
-			            eleLink.download = filename;
-			            eleLink.style.display = 'none';
-			            eleLink.href = content;
-			            document.body.appendChild(eleLink);
-			            eleLink.click();
-			            document.body.removeChild(eleLink);
 			        };
 			        const getInfo = async () => {
 			            document.getElementById("filename").innerText = "";
@@ -25,8 +16,10 @@
 			                document.getElementById("filename").innerText = "文件名称:" + fileInfo.name;
 			                document.getElementById("filesize").innerText = "文件大小:" + fileInfo.size;
 			                document.getElementById("filetime").innerText = "文件时间:" + fileInfo.time;
-			                document.getElementById("dlURL").innerText = "下载地址:" + fileInfo.link;
+			                document.getElementById("dlURL").innerText = "下载地址:";
+				document.getElementById("temp").innerText = fileInfo.link;
 			                document.getElementById("dlbtn").style.display = "block";
+				
 			                const record = {
 			                    link: document.getElementById("link").value,
 			                    password,
@@ -49,9 +42,15 @@
 			                document.getElementById("filename").innerText = "出错了，错误原因是:" + fileInfo.errormsg;
 			            }
 			        }
-			        const dlFile = () => {
-			            funDownload(dlURL, jsonText.file_name);
-			        }
+			            function dlFile(){
+				        var val = document.getElementById('temp');
+				        window.getSelection().selectAllChildren(val);
+				        document.execCommand ("Copy");
+					mdui.snackbar({
+		  				message: '复制成功',
+						position: 'right-top',
+						});
+				    }
 			        const readClipboard = async () => {
 			            const log = console.log.bind(console)
 			            const text = await navigator.clipboard.readText().catch(err => {
