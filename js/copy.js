@@ -68,13 +68,22 @@
 			                    const link = text.match(urlPattern);
 			                    $link.focus()
 			                    $link.value = link[0];
+								if (text.indexOf("密码") != -1 || text.indexOf("密碼") != -1) {
 			                    const rawPassword = text.split("密码")[1] || text.split("密碼")[1];
 			                    const password = rawPassword.match(pwPattern);
 			                    $passcode.focus()
 			                    $passcode.value = password[0];
 			                    await getInfo()
+								}
+								else {
+									const rawPassword = text.split("?p=")[1];
+									const password = rawPassword.match(pwPattern);
+									$passcode.focus()
+									$passcode.value = password[0];
+									await getInfo()
+								}
 			                } catch (e) {
-			                    mdui.alert('期望的文本形式类似于“https://url76.ctfile.com/f/20044976-553638227-3a47df 密码4718”，请尝试重新复制或者手动填入', '无法从剪贴板读取链接和密码');
+			                    mdui.alert('期望的文本形式类似于“https://url76.ctfile.com/f/20044976-553638227-3a47df 密码4718”，或者“https://url74.ctfile.com/f/26012674-739221914-59608d?p=6195”请尝试重新复制或者手动填入\n当前读取到了 ' + text, '无法从剪贴板读取链接和密码');
 			                }
 			            }
 			        }
